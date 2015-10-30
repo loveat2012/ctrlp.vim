@@ -259,6 +259,9 @@ fu! s:match_window_opts()
 		\ s:mw =~ 'min:[^,]\+' ? str2nr(matchstr(s:mw, 'min:\zs\d\+')) : 1
 	let [s:mw_max, s:mw_min] = [max([s:mw_max, 1]), max([s:mw_min, 1])]
 	let s:mw_min = min([s:mw_min, s:mw_max])
+	let s:maxfiles =
+		\ s:mw =~ 'maxfiles:[^,]\+' ? str2nr(matchstr(s:mw, 'maxfiles:\zs\d\+'))
+		\ : s:maxfiles
 	let s:mw_res =
 		\ s:mw =~ 'results:[^,]\+' ? str2nr(matchstr(s:mw, 'results:\zs\d\+'))
 		\ : min([s:mw_max, &lines])
